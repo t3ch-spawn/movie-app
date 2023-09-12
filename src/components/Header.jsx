@@ -73,7 +73,7 @@ export default function Header() {
 
         {/* container for search results */}
         {searchInput ? (
-          <div className="absolute top-[120%] rounded-lg w-[100%] bg-white flex flex-col items-center max-h-[40vh] overflow-y-scroll gap-4">
+          <div className="absolute top-[120%] rounded-lg py-4 w-[100%] bg-white flex flex-col items-center max-h-[40vh] overflow-y-scroll gap-4">
             {movieCardEls}
           </div>
         ) : (
