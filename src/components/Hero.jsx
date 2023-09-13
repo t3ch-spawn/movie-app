@@ -15,7 +15,7 @@ export default function Hero(props) {
       {props.children}
 
       {/* container for typography */}
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 -720:mt-[80px]">
         {/* heading */}
         <h1 className="text-5xl leading-[130%]">
           John Wick 3 : <br /> Parabellum

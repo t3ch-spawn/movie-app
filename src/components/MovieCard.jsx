@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import batman from "../../public/images/batman.png";
 
 export default function MovieCard(props) {
   const [genreEls, setGenreEls] = useState([]);
@@ -47,9 +46,9 @@ export default function MovieCard(props) {
       </div>
 
       {/* movie details */}
-      <div className="flex flex-col items-start">
+      <div className="flex flex-col items-start gap-[2px]">
         {/* year of release and region */}
-        <div className="text-movieGray">USA,
+        <div className="text-movieGray">Release date: 
         <span data-testid = 'movie-release-date'> {props.date}</span>
         </div>
 

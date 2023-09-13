@@ -4,6 +4,7 @@ import Header from "./components/Header";
 
 import "./App.css";
 import MovieList from "./components/MovieList";
+import Footer from "./components/Footer";
 
 function App() {
   useEffect(() => {
@@ -17,6 +18,7 @@ function App() {
         <Header/>
       </Hero>
     <MovieList/>
+    <Footer/>
     </div>
   );
 }

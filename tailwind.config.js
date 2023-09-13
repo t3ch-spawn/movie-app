@@ -10,7 +10,12 @@ export default {
 
       fontFamily:{
         main: 'Poppins'
-      }
+      },
+
+      
+      screens: {
+        "-720": { max: "720px" },
+      },
     },
   },
   plugins: [],

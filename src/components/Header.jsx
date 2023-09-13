@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import search from "../../public/images/search-icon.png";
 import logo from "../../public/images/logo.png";
+import loader from "../../public/images/loader.gif";
+import logoMob from "../../public/images/tv.png";
 import MovieCardSearch from "./MovieCardSearch";
 
 export default function Header() {
   const [searchInput, setSearchInput] = useState("");
-  const [isSearching, setIsSearching] = useState(false);
+  const [hasFetched, setHasFetched] = useState(false);
   const [movieData, setMovieData] = useState([]);
 
   useEffect(() => {
@@ -26,8 +28,11 @@ export default function Header() {
         if (searchInput === "") {
           //   console.log("gyat");
         } else if (searchInput !== "") {
-          setIsSearching(true);
-          return setMovieData(response.results);
+          setHasFetched(true);
+          return setMovieData(response.results.filter((movie)=>{
+            // only fethces movies that have a poster path in the object
+            return movie.poster_path
+          }));
         }
       })
       .catch((err) => console.error(err));
@@ -51,10 +56,11 @@ export default function Header() {
 
   return (
     // Container for Header
-    <div className="flex w-[100%] justify-between items-center absolute top-10 left-0 px-8">
+    <div className="flex w-[100%] justify-between items-center absolute top-10 left-0 px-8 -720:mt-[40px]">
       {/* container for logo */}
       <div>
-        <img src={logo} alt="" />
+        <img src={logo} className="-720:hidden" alt="" />
+        <img src={logoMob} className="-720:block hidden" alt="" />
       </div>
 
       {/* container for search bar */}
@@ -74,13 +80,14 @@ export default function Header() {
         {/* container for search results */}
         {searchInput ? (
           <div className="absolute top-[120%] rounded-lg py-4 w-[100%] bg-white flex flex-col items-center max-h-[40vh] overflow-y-scroll gap-4">
+            <img src={loader} className={`w-[100px] ${hasFetched ? 'hidden' : 'block'}`} alt="" />
             {movieCardEls}
           </div>
         ) : (
           <div></div>
         )}
 
-        {searchInput.length > 2 && movieData.length == 0 ? (
+        {searchInput.length > 2 && movieData.length == 0 && hasFetched ? (
           <div className="absolute top-[120%] rounded-lg w-[100%] bg-white text-black text-3xl p-8 text-center max-h-[40vh] gap-4">
             We cannot find the movie you are looking for ☹️
           </div>
@@ -88,6 +95,7 @@ export default function Header() {
           <div></div>
         )}
       </div>
+
 
       {/* container for sign in and hamburger */}
       <div className="flex justify-center items-center text-white gap-4">
