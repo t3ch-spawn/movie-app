@@ -29,10 +29,12 @@ export default function Header() {
           //   console.log("gyat");
         } else if (searchInput !== "") {
           setHasFetched(true);
-          return setMovieData(response.results.filter((movie)=>{
-            // only fethces movies that have a poster path in the object
-            return movie.poster_path
-          }));
+          return setMovieData(
+            response.results.filter((movie) => {
+              // only fethces movies that have a poster path in the object
+              return movie.poster_path;
+            })
+          );
         }
       })
       .catch((err) => console.error(err));
@@ -42,6 +44,8 @@ export default function Header() {
     setSearchInput(e.target.value);
   }
 
+  console.log(movieData);
+
   const movieCardEls = movieData.slice(0, 10).map((data) => {
     return (
       <MovieCardSearch
@@ -50,6 +54,7 @@ export default function Header() {
         key={data.id}
         genreId={data.genre_ids}
         date={data.release_date}
+        id={data.id}
       />
     );
   });
@@ -79,8 +84,13 @@ export default function Header() {
 
         {/* container for search results */}
         {searchInput ? (
-          <div className="absolute top-[120%] rounded-lg py-4 w-[100%] bg-white flex flex-col items-center max-h-[40vh] overflow-y-scroll gap-4">
-            <img src={loader} className={`w-[100px] ${hasFetched ? 'hidden' : 'block'}`} alt="" />
+          <div className="search-results absolute top-[120%] rounded-lg py-4 w-[100%] bg-white flex flex-col items-center max-h-[40vh] overflow-y-scroll gap-4">
+            <img
+              src={loader}
+              className={`w-[100px] ${hasFetched ? "hidden" : "block"}`}
+              alt=""
+            />
+            <p className="text-black text-2xl font-semibold">Search results for: {searchInput}</p>
             {movieCardEls}
           </div>
         ) : (
@@ -95,7 +105,6 @@ export default function Header() {
           <div></div>
         )}
       </div>
-
 
       {/* container for sign in and hamburger */}
       <div className="flex justify-center items-center text-white gap-4">

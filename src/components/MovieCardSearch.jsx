@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function (props) {
   const [genreEls, setGenreEls] = useState([]);
@@ -37,38 +38,40 @@ export default function (props) {
   }, []);
 
   return (
-    <div
-      data-testid="movie-card"
-      className="flex items-center w-[70%] -500:w-[95%] gap-4"
-    >
-      {/* movie poster */}
-      <div className="w-[110px] h-[150px] flex">
-        <img
-          data-testid="movie-poster"
-          className="w-[100%] min-w-[110px] h-[100%] text-black"
-          src={getPicUrl(props.path)}
-          alt="movie-poster"
-        />
-      </div>
-
-      {/* movie details */}
-      <div className="flex flex-col items-start">
-        {/* year of release and region */}
-        <div className="text-movieGray">
-          <span data-testid="movie-release-date"> {props.date}</span>
+    <Link to={`/movies/${props.id}`}>
+      <div
+        data-testid="movie-card"
+        className="flex items-center w-[70%] -500:w-[95%] gap-4"
+      >
+        {/* movie poster */}
+        <div className="w-[110px] h-[150px] flex">
+          <img
+            data-testid="movie-poster"
+            className="w-[100%] min-w-[110px] h-[100%] text-black"
+            src={getPicUrl(props.path)}
+            alt="movie-poster"
+          />
         </div>
 
-        {/* movie title */}
-        <h3 data-testid="movie-title" className="font-bold text-black">
-          {props.title}
-        </h3>
+        {/* movie details */}
+        <div className="flex flex-col items-start">
+          {/* year of release and region */}
+          <div className="text-movieGray">
+            <span data-testid="movie-release-date"> {props.date}</span>
+          </div>
 
-        {/* rating */}
-        <div></div>
+          {/* movie title */}
+          <h3 data-testid="movie-title" className="font-bold text-black">
+            {props.title}
+          </h3>
 
-        {/* movie genre */}
-        <div className="text-movieGray">{genreEls.join(", ")}</div>
+          {/* rating */}
+          <div></div>
+
+          {/* movie genre */}
+          <div className="text-movieGray">{genreEls.join(", ")}</div>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 }

@@ -12,7 +12,7 @@ export default function Footer() {
         </div>
 
         {/* container for redirects */}
-        <div className='flex justify-center items-center'>
+        <div className='flex justify-center items-center gap-6 font-bold'>
 
             <p>Conditions of Use</p>
             <p>Privacy & Policy</p>

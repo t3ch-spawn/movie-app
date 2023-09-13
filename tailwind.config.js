@@ -5,11 +5,13 @@ export default {
     extend: {
       colors: {
         mainRed: "#BE123C",
-        movieGray: '#9CA3AF'
+        movieGray: '#9CA3AF',
+        favourite: 'rgba(243, 244, 246, 0.50)',
       },
 
       fontFamily:{
-        main: 'Poppins'
+        'page2': 'Poppins',
+        main: "DM Sans"
       },
 
       
