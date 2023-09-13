@@ -39,13 +39,13 @@ export default function (props) {
   return (
     <div
       data-testid="movie-card"
-      className="flex items-center w-[70%] gap-4"
+      className="flex items-center w-[70%] -500:w-[95%] gap-4"
     >
       {/* movie poster */}
-      <div className="w-[110px] h-[150px]">
+      <div className="w-[110px] h-[150px] flex">
         <img
           data-testid="movie-poster"
-          className="w-[100%] h-[100%] text-black"
+          className="w-[100%] min-w-[110px] h-[100%] text-black"
           src={getPicUrl(props.path)}
           alt="movie-poster"
         />
