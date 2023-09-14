@@ -55,3 +55,11 @@ input::placeholder {
     margin-bottom: 30px;
   }
 }
+
+.dashboard-lower > span{
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 15px 30px;
+}

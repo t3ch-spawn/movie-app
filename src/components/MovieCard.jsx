@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import heart from "../../public/images/heart.png";
-import imdb from "../../public/images/imdb.png";
-import tomato from "../../public/images/rotten-tomato.png";
+import imdb from "../../public/images/imdb.svg";
+import tomato from "../../public/images/tomato.svg";
+import loader from "../../public/images/loader.gif";
 
 export default function MovieCard(props) {
   const [genreEls, setGenreEls] = useState([]);
   const [isFavourite, setIsFavourite] = useState(false);
+  const [hasLoaded, setHasLoaded] = useState(false);
 
   function getPicUrl(pic_path) {
     return `https://www.themoviedb.org/t/p/w220_and_h330_face${pic_path}`;
@@ -60,13 +62,26 @@ export default function MovieCard(props) {
           className="flex flex-col items-start w-[100%] gap-4 relative"
         >
           {/* movie poster */}
-          <div className="w-[100%]">
+          <div className="w-[100%] relative">
             <img
               data-testid="movie-poster"
               className="w-[100%]"
               src={getPicUrl(props.path)}
               alt="movie-poster"
+              onLoad={() => {
+                setHasLoaded(true);
+              }}
             />
+
+            {/* loader for image */}
+            <div
+              src={loader}
+              className={`${
+                hasLoaded ? "hidden" : "block"
+              } h-[102%] w-[102%] bg-white flex justify-center items-center absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]`}
+            >
+              <img src={loader} alt="" />
+            </div>
           </div>
 
           {/* movie details */}

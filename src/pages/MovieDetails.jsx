@@ -5,12 +5,14 @@ import play from "../../public/images/play-yt.jpg";
 
 // router
 import { useParams } from "react-router-dom";
+import Dashboard from "../components/Dashboard";
 
 export default function MovieDetails() {
   const [movie, setMovie] = useState([]);
   const { id } = useParams();
   const [hasFetched, setHasFetched] = useState(false);
   const [genreArr, setGenreArr] = useState([]);
+  const [hasLoaded, setHasLoaded] = useState(false);
 
   function getPicUrl(pic_path) {
     return `https://image.tmdb.org/t/p/original/${pic_path}`;
@@ -53,46 +55,56 @@ export default function MovieDetails() {
       />
 
       {/* container of page */}
-      <div className={`${hasFetched ? "block" : "hidden"}`}>
+      <div className={`${hasFetched ? "block" : "hidden"} relative flex`}>
         {/* dashboard */}
-        <div></div>
+        <Dashboard />
 
         {/* main content */}
 
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 w-[100%]">
           {/* trailer section */}
-          <div className="flex justify-center items-center overflow-hidden bg-gray-300 p-4">
-            <div className="w-[60%] flex justify-around items-center">
+          <div className="flex justify-center items-center overflow-hidden bg-gray-300 p-4 relative">
+
+            {/* loader for image */}
+            <div
+              src={loader}
+              className={`${
+                hasLoaded ? "hidden" : "block"
+              } h-[102%] w-[102%] bg-white flex justify-center items-center absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]`}
+            >
+              <img src={loader} alt="" />
+            </div>
+
+            {/* actual content, i.e the image */}
+            <div className="w-[60%] flex justify-around items-center min-h-[40vh]">
               <img
-                src={getPicUrl(movie.backdrop_path ? movie.backdrop_path : movie.poster_path)}
+                src={getPicUrl(
+                  movie.backdrop_path ? movie.backdrop_path : movie.poster_path
+                )}
                 className="rounded-xl object-cover max-h-[70vh]"
                 alt=""
+                onLoad={()=>{setHasLoaded(true)}}
               />
-
-              {/* <div className="cursor-pointer flex flex-col gap-2">
-                <img src={play} className="w-[100px]" alt="" />
-                <p>Watch Trailer</p>
-              </div> */}
             </div>
           </div>
 
           {/* movie main details and rating */}
-          <div className="flex justify-start items-center gap-2 text-[#404040] font-[500]">
+          <div className="flex justify-start items-center gap-2 text-[#404040] font-[600]">
             {/* movie title */}
-            <p>{movie.title}</p>
+            <p data-testid="movie-title">{movie.title}</p>
             <div>•</div>
 
             {/* release date */}
-            <p>{movie.release_date}</p>
+            <p data-testid="movie-release-date">{movie.release_date}</p>
             <div>•</div>
 
             {/* run time */}
-            <p>{movie.runtime}mins</p>
+            <p data-testid="movie-runtime">{movie.runtime}mins</p>
 
             {/* genres */}
-            <div className="text-mainRed flex gap-6">
+            <div className="text-mainRed text-sm font-bold flex gap-6">
               {genreArr.map((genre) => (
-                <p className="border-[1px] border-[#F8E7EB] rounded-[20px] p-2 font-[500]">
+                <p className="border-[1px] border-[#F8E7EB] rounded-[20px] p-2">
                   {genre.name}
                 </p>
               ))}
@@ -102,22 +114,29 @@ export default function MovieDetails() {
           {/* movie overview and related content */}
           <div className="flex">
             {/* movie overview, directors and writers */}
-            <div className="flex flex-col gap-4 w-[50%]">
-              <p>{movie.overview}</p>
+            <div className="flex flex-col gap-4 w-[100%]">
+              <p data-testid="movie-overview">{movie.overview}</p>
 
-              <p>Director: <span className="text-mainRed">Lorem ipsum dolor sit amet</span></p>
+              <p>
+                Director:{" "}
+                <span className="text-mainRed">Lorem ipsum dolor sit amet</span>
+              </p>
 
-              <p>Writers: <span className="text-mainRed">Lorem ipsum dolor sit amet</span></p>
+              <p>
+                Writers:{" "}
+                <span className="text-mainRed">Lorem ipsum dolor sit amet</span>
+              </p>
 
-              <p>Stars: <span className="text-mainRed">Lorem ipsum dolor sit amet</span></p>
+              <p>
+                Stars:{" "}
+                <span className="text-mainRed">Lorem ipsum dolor sit amet</span>
+              </p>
 
               <div>Top rated movie</div>
             </div>
 
             {/* movie related content */}
-            <div>
-              {/* <img src={related} alt="" />   */}
-            </div>
+            <div>{/* <img src={related} alt="" />   */}</div>
           </div>
         </div>
       </div>

@@ -14,7 +14,7 @@ function App() {
   useEffect(() => {}, []);
 
   return (
-    <div className="font-main flex flex-col gap-[100px] w-[100%] justify-center items-center">
+    <div className="font-main flex flex-col gap-[100px] w-[100%] justify-center items-center relative">
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/movies/:id" element={<MovieDetails/>}/>

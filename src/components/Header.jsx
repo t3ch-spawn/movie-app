@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import search from "../../public/images/search-icon.png";
 import logo from "../../public/images/logo.png";
 import loader from "../../public/images/loader.gif";
-import logoMob from "../../public/images/tv.png";
+import logoMob from "../../public/images/tv.svg";
 import MovieCardSearch from "./MovieCardSearch";
 
 export default function Header() {
@@ -84,13 +84,15 @@ export default function Header() {
 
         {/* container for search results */}
         {searchInput ? (
-          <div className="search-results absolute top-[120%] rounded-lg py-4 w-[100%] bg-white flex flex-col items-center max-h-[40vh] overflow-y-scroll gap-4">
+          <div className="search-results absolute top-[120%] rounded-lg py-4 w-[100%] bg-white flex flex-col items-center max-h-[50vh] overflow-y-scroll gap-4">
+            <p className="text-black text-2xl font-semibold">
+              Search results for: {searchInput}
+            </p>
             <img
               src={loader}
               className={`w-[100px] ${hasFetched ? "hidden" : "block"}`}
               alt=""
             />
-            <p className="text-black text-2xl font-semibold">Search results for: {searchInput}</p>
             {movieCardEls}
           </div>
         ) : (
