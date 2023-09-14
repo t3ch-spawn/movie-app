@@ -82,8 +82,7 @@ export default function MovieList(props) {
         />
         {hasFetched ? movieCardEls : ""}
       </div>
-
-      {props.children}
+      {hasFetched?  props.children : ''}
     </div>
   );
 }

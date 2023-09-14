@@ -102,7 +102,7 @@ export default function MovieDetails() {
             <p data-testid="movie-runtime">{movie.runtime}mins</p>
 
             {/* genres */}
-            <div className="text-mainRed text-sm font-bold flex gap-4">
+            <div className="text-mainRed text-sm font-bold flex gap-4 flex-wrap">
               {genreArr.map((genre) => (
                 <p className="border-[1px] border-[#F8E7EB] rounded-[20px] p-2">
                   {genre.name}

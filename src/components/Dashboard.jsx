@@ -26,7 +26,7 @@ export default function Dashboard() {
 
       {/* container for dashboard */}
       <div
-        className={`dashboard relative top-0 flex flex-col items-center py-4 gap-14 w-[50%] left-0 max-w-[250px] -950:fixed -950:shadow-xl -950:bg-white -950:z-[8] min-h-[100vh] -950:pt-[100px] -950:overflow-y-scroll -400:w-[80%] ${
+        className={`dashboard relative top-0 flex flex-col items-center py-4 gap-14 w-[50%] left-0 max-w-[250px] -950:absolute -950:shadow-xl -950:bg-white -950:z-[8] min-h-[100vh] -950:pt-[100px] -950:overflow-y-scroll -400:w-[80%] ${
           navShown ? "-950:opacity-1 -950:w-[50%]" : "-950:opacity-0 -950:w-[0%]"
         }`}
       >
