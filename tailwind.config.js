@@ -17,8 +17,10 @@ export default {
 
       
       screens: {
+        "-950": { max: "950px" },
         "-720": { max: "720px" },
         "-500": { max: "500px" },
+        "-400": { max: "400px" },
       },
     },
   },

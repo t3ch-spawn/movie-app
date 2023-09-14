@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import MovieCard from "./MovieCard";
 import loader from "../../public/images/loader.gif";
 
-export default function MovieList() {
+export default function MovieList(props) {
   const [movieData, setMovieData] = useState([]);
   const [hasFetched, setHasFetched] = useState(false);
 
@@ -57,7 +57,7 @@ export default function MovieList() {
         key={data.id}
         genreId={data.genre_ids}
         date={data.release_date}
-        rating = {data.vote_average}
+        rating={data.vote_average}
       />
     );
   });
@@ -67,7 +67,9 @@ export default function MovieList() {
       <div className="flex justify-between w-[80%]">
         <h3 className="text-4xl font-bold">Featured Movies</h3>
 
-        <p className="text-mainRed cursor-pointer">See more <span className="font-bold">{'>'}</span></p>
+        <p className="text-mainRed cursor-pointer">
+          See more <span className="font-bold">{">"}</span>
+        </p>
       </div>
 
       <div className={` movie-list grid relative`}>
@@ -80,6 +82,8 @@ export default function MovieList() {
         />
         {hasFetched ? movieCardEls : ""}
       </div>
+
+      {props.children}
     </div>
   );
 }

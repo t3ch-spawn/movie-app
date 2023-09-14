@@ -25,13 +25,13 @@ input::placeholder {
   z-index: 4;
 }
 
-.favorite{
-    backdrop-filter: blur(1px);
-    transition: 0.3s ease;
+.favorite {
+  backdrop-filter: blur(1px);
+  transition: 0.3s ease;
 }
 
-.favorite.active{
-    background-color: red !important;
+.favorite.active {
+  background-color: red !important;
 }
 
 .movie-list {
@@ -56,10 +56,26 @@ input::placeholder {
   }
 }
 
-.dashboard-lower > span{
+.dashboard-lower > span {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   width: 100%;
   padding: 15px 30px;
+}
+
+.dashboard{
+  transition: 0.3s;
+  
+}
+
+.dashboard-hamburger div {
+  transition: 0.3s;
+}
+
+.dashboard-hamburger.active .bar-1 {
+  transform: translateY(4px) rotate(45deg);
+}
+.dashboard-hamburger.active .bar-2 {
+  transform: translateY(-5px) rotate(-45deg);
 }

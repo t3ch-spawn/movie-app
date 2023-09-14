@@ -76,7 +76,7 @@ export default function MovieDetails() {
             </div>
 
             {/* actual content, i.e the image */}
-            <div className="w-[60%] flex justify-around items-center min-h-[40vh]">
+            <div className="w-[60%] -720:w-[85%] -400:w-[90%] flex justify-around items-center min-h-[25vh]">
               <img
                 src={getPicUrl(
                   movie.backdrop_path ? movie.backdrop_path : movie.poster_path
@@ -89,20 +89,20 @@ export default function MovieDetails() {
           </div>
 
           {/* movie main details and rating */}
-          <div className="flex justify-start items-center gap-2 text-[#404040] font-[600]">
+          <div className="flex justify-start items-center gap-2 text-[#404040] font-[600] -950:flex-col -950:items-start -950:px-8">
             {/* movie title */}
             <p data-testid="movie-title">{movie.title}</p>
-            <div>•</div>
+            <div className="-950:hidden">•</div>
 
             {/* release date */}
             <p data-testid="movie-release-date">{movie.release_date}</p>
-            <div>•</div>
+            <div className="-950:hidden">•</div>
 
             {/* run time */}
             <p data-testid="movie-runtime">{movie.runtime}mins</p>
 
             {/* genres */}
-            <div className="text-mainRed text-sm font-bold flex gap-6">
+            <div className="text-mainRed text-sm font-bold flex gap-4">
               {genreArr.map((genre) => (
                 <p className="border-[1px] border-[#F8E7EB] rounded-[20px] p-2">
                   {genre.name}
@@ -112,7 +112,7 @@ export default function MovieDetails() {
           </div>
 
           {/* movie overview and related content */}
-          <div className="flex">
+          <div className="flex -950:px-8">
             {/* movie overview, directors and writers */}
             <div className="flex flex-col gap-4 w-[100%]">
               <p data-testid="movie-overview">{movie.overview}</p>
