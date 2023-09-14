@@ -13,6 +13,7 @@ export default function MovieDetails() {
   const [hasFetched, setHasFetched] = useState(false);
   const [genreArr, setGenreArr] = useState([]);
   const [hasLoaded, setHasLoaded] = useState(false);
+  const [cantFetch, setCantFetch] = useState(false);
 
   function getPicUrl(pic_path) {
     return `https://image.tmdb.org/t/p/original/${pic_path}`;
@@ -32,10 +33,13 @@ export default function MovieDetails() {
       .then((response) => response.json())
       .then((response) => {
         setHasFetched(true);
+        setCantFetch(false);
         setGenreArr(response.genres);
         return setMovie(response);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => { 
+        setCantFetch(true)
+        return console.error(err)});
   }, []);
 
   console.log(movie);
@@ -46,6 +50,14 @@ export default function MovieDetails() {
 
   return (
     <div className="text-black w-[100%]">
+      {cantFetch ? (
+        <div className="text-lg">
+          Something went wrong, check your network connection...
+        </div>
+      ) : (
+        ""
+      )}
+
       <img
         src={loader}
         className={`${
@@ -64,7 +76,6 @@ export default function MovieDetails() {
         <div className="flex flex-col gap-4 w-[100%]">
           {/* trailer section */}
           <div className="flex justify-center items-center overflow-hidden bg-gray-300 p-4 relative">
-
             {/* loader for image */}
             <div
               src={loader}
@@ -83,7 +94,9 @@ export default function MovieDetails() {
                 )}
                 className="rounded-xl object-cover max-h-[70vh]"
                 alt=""
-                onLoad={()=>{setHasLoaded(true)}}
+                onLoad={() => {
+                  setHasLoaded(true);
+                }}
               />
             </div>
           </div>
@@ -132,7 +145,7 @@ export default function MovieDetails() {
                 <span className="text-mainRed">Lorem ipsum dolor sit amet</span>
               </p>
 
-              <div>Top rated movie</div>
+              {/* <div>Top rated movie</div> */}
             </div>
 
             {/* movie related content */}

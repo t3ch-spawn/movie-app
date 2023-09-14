@@ -5,6 +5,7 @@ import loader from "../../public/images/loader.gif";
 export default function MovieList(props) {
   const [movieData, setMovieData] = useState([]);
   const [hasFetched, setHasFetched] = useState(false);
+  const [cantFetch, setCantFetch] = useState(false);
 
   useEffect(() => {
     const topMovies = {
@@ -23,9 +24,13 @@ export default function MovieList(props) {
       .then((response) => response.json())
       .then((response) => {
         setHasFetched(true);
+        setCantFetch(false);
         return setMovieData(response.results);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        setCantFetch(true);
+        return console.error(err);
+      });
 
     // const trendingMovies = {
     //   method: "GET",
@@ -72,6 +77,12 @@ export default function MovieList(props) {
         </p>
       </div>
 
+      {cantFetch ? (
+        <div className="text-lg">Something went wrong, check your network connection...</div>
+      ) : (
+        ""
+      )}
+
       <div className={` movie-list grid relative`}>
         <img
           src={loader}
@@ -82,7 +93,7 @@ export default function MovieList(props) {
         />
         {hasFetched ? movieCardEls : ""}
       </div>
-      {hasFetched?  props.children : ''}
+      {hasFetched ? props.children : ""}
     </div>
   );
 }
