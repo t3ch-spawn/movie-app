@@ -12,7 +12,7 @@ export default function Hero(props) {
   return (
     <div
       style={styles}
-      className="flex flex-col w-[100%] items-start justify-around min-h-[80vh] relative px-8 bg-center bg-no-repeat bg-cover text-white"
+      className="flex flex-col w-[100%] items-start justify-around -720:justify-start min-h-[80vh] relative px-8 -400:px-4 bg-center bg-no-repeat bg-cover text-white"
     >
       {props.children}
 
@@ -20,7 +20,7 @@ export default function Hero(props) {
       <div className="flex flex-col gap-4 -720:mt-[80px]">
         {/* heading */}
         <h1 className="text-5xl leading-[130%]">
-          John Wick 3 : <br /> Parabellum
+          John Wick 3 : Parabellum
         </h1>
 
         {/* container for rating */}

@@ -72,7 +72,7 @@ const [hasLoaded, setHasLoaded] = useState(false);
         <div className="flex flex-col items-start">
           {/* year of release and region */}
           <div className="text-movieGray">
-            <span> {props.date}</span>
+            <span> {new Date(props.date).toUTCString()}</span>
           </div>
 
           {/* movie title */}

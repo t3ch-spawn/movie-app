@@ -45,7 +45,7 @@ input::placeholder {
   justify-content: center;
 }
 
-@media screen and (max-width: 720px) {
+/* @media screen and (max-width: 720px) {
   .search-container {
     position: fixed;
     top: 10px;
@@ -54,7 +54,7 @@ input::placeholder {
     width: 90%;
     margin-bottom: 30px;
   }
-}
+} */
 
 .dashboard-lower > span {
   display: flex;

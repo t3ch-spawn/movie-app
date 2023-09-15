@@ -44,7 +44,7 @@ export default function Header() {
     setSearchInput(e.target.value);
   }
 
-  console.log(movieData);
+  // console.log(movieData);
 
   const movieCardEls = movieData.slice(0, 10).map((data) => {
     return (
@@ -61,7 +61,7 @@ export default function Header() {
 
   return (
     // Container for Header
-    <div className="flex w-[100%] justify-between items-center absolute top-10 left-0 px-8 -720:mt-[40px]">
+    <div className="flex w-[100%] justify-between items-center relative top-10 left-0 px-8 -720:p-2 -720:flex-col -720:items-start -720:gap-4">
       {/* container for logo */}
       <div>
         <img src={logo} className="-720:hidden" alt="" />
@@ -69,7 +69,7 @@ export default function Header() {
       </div>
 
       {/* container for search bar */}
-      <div className="relative w-[50%] search-container">
+      <div className="relative -720:w-[90%] w-[50%] search-container">
         <input
           className="bg-transparent border-2 border-white px-4 py-2 text-white w-[100%] rounded"
           type="text"
@@ -109,7 +109,7 @@ export default function Header() {
       </div>
 
       {/* container for sign in and hamburger */}
-      <div className="flex justify-center items-center text-white gap-4">
+      <div className="flex justify-center items-center text-white gap-4 -720:absolute -720:top-4 -400:top-4  -720:right-4">
         <p>Sign In</p>
         <div className="bg-mainRed w-[40px] h-[40px] p-2 rounded-[50%] flex flex-col justify-center items-center gap-[6px]">
           <div className="w-[90%] rounded-[3px] bg-white h-[3px]"></div>

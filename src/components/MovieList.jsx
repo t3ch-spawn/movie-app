@@ -51,7 +51,7 @@ export default function MovieList(props) {
     //   .catch((err) => console.error(err));
   }, []);
 
-  console.log(movieData);
+  // console.log(movieData);
 
   const movieCardEls = movieData.slice(0, 10).map((data) => {
     return (
