@@ -108,7 +108,7 @@ export default function MovieDetails() {
             <div className="-950:hidden">•</div>
 
             {/* release date */}
-            <p data-testid="movie-release-date">{movie.release_date}</p>
+            <p data-testid="movie-release-date">{new Date(movie.release_date).toUTCString()}</p>
             <div className="-950:hidden">•</div>
 
             {/* run time */}

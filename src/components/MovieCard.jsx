@@ -89,7 +89,7 @@ export default function MovieCard(props) {
             {/* year of release and region */}
             <div className="text-movieGray">
               Release date:
-              <span data-testid="movie-release-date"> {props.date}</span>
+              <span data-testid="movie-release-date"> {new Date(props.date).toUTCString()}</span>
             </div>
 
             {/* movie title */}
